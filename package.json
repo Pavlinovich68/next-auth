@@ -19,5 +19,8 @@
     "react-dom": "18.2.0",
     "swr": "^2.2.2",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "prisma": "^5.3.1"
   }
 }
