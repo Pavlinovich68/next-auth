@@ -1,12 +1,13 @@
 "use client"
 import styles from "./page.module.css";
 import {useState, useEffect} from "react";
+import useSWR from "swr";
 
 
 const Dashboard = () => {
-    const [data, setData] = useState([]);
+    /*const [data, setData] = useState([]);
     const [error, setError] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);*/
 
     /*useEffect(() => {
         const getData = async () => {
@@ -27,7 +28,11 @@ const Dashboard = () => {
 
     console.log(data);*/
 
+    // @ts-ignore
     const fetcher = (...args: any) => fetch(...args).then(res => res.json());
+
+    const {data, error, isLoading} = useSWR('https://jsonplaceholder.typicode.com/posts', fetcher);
+    console.log(data)
 
     return (
         <div className={styles.container}></div>
