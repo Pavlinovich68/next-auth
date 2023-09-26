@@ -33,3 +33,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+/.idea/git_toolbox_prj.xml
+/prisma/migrations/migration_lock.toml
+/.idea/vcs.xml
