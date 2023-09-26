@@ -1,9 +1,10 @@
 import postService from "./service"
 import { NextResponse,  } from "next/server";
 
-export const GET = async (request) => {
+export const GET = async (request, {params}) => {
+    const {id} = params;
     try {
-        const result = await postService.read();
+        const result = await postService.get(id);
         let json_response = {
             status: "success",
             results: result.length,

@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import Image from "next/image";
 
 async function getData(id: any) {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+    const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
         cache: "no-store",
     });
 
@@ -11,7 +11,7 @@ async function getData(id: any) {
         throw new Error("Failed to fetch data");
     }
 
-    return res.json();
+    return await res.json();
 }
 
 export async function generateMetadata({ params }: any){
@@ -28,25 +28,25 @@ const BlogId = async ({ params }: any) => {
         <div className={styles.container}>
             <div className={styles.top}>
                 <div className={styles.info}>
-                    <h1 className={styles.title}>{data.title}</h1>
-                    <p className={styles.desc}>{data.body}</p>
+                    <h1 className={styles.title}>{data.result.title}</h1>
+                    <p className={styles.desc}>{data.result.desc}</p>
                     <div className={styles.author}>
                         <Image
-                            src={data.img}
+                            src={data.result.img}
                             alt=""
                             width={40}
                             height={40}
                             className={styles.avatar}
                         />
-                        <span className={styles.username}>{data.username}</span>
+                        <span className={styles.username}>{data.result.username}</span>
                     </div>
                 </div>
                 <div className={styles.imageContainer}>
-                    <Image src={data.img} alt="" fill={true} className={styles.image} />
+                    <Image src={data.result.img} alt="" fill={true} className={styles.image} />
                 </div>
             </div>
             <div className={styles.content}>
-                <p className={styles.text}>{data.content}</p>
+                <p className={styles.text}>{data.result.content}</p>
             </div>
         </div>
     );
