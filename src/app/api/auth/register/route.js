@@ -1,9 +1,9 @@
 import {NextResponse} from "next/server";
 import userService from '../service'
 export const POST = async (request) => {
-    //const {name, email, password} = request.json();
+    const {name, email, password} = await request.json();
     console.log('console.log(request.json()):');
-    /*try {
+    try {
         const result = await userService.create(name, email, password);
         let json_response = {
             status: "success",
@@ -19,5 +19,5 @@ export const POST = async (request) => {
             status: 500,
             headers: { "Content-Type": "application/json" },
         });
-    }*/
+    }
 }
